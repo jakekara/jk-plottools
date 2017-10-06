@@ -30,7 +30,7 @@ Here is a run-down of the methods in the order you would typically use
 them, along with a continus example that assumes you have included the jkd3
 library in an HTML document and have a div with id "#container" somewhere
 to draw in. The complete example can be found in
-[js/jk-demo.js](js/jk-demo.js) and viewed live at
+[js/jk-demo.js](js/jk-demo.js) and viewed live at [https://jakekara.github.io/jk-plottools](https://jakekara.github.io/jk-plottools)
 
 # jkd3.plotter
 
