@@ -1,4 +1,4 @@
-var jkd3 = jkd3 || {}
+var jkd3 = jkd3 || {};
 
 jkd3.axes = function(plotter){
     this.plotter = plotter;
@@ -13,7 +13,6 @@ jkd3.axes.prototype.xAxis = jkd3.accessor("__xAxis");
 
 jkd3.axes.prototype.draw = function(){
 
-
     var bbox = this.plotter.svg().node().getBoundingClientRect();
     var width = bbox.width - this.plotter.margin.left - this.plotter.margin.right;
     var height = bbox.height - this.plotter.margin.top - this.plotter.margin.bottom;
@@ -23,19 +22,24 @@ jkd3.axes.prototype.draw = function(){
     this.yAxis(d3.axisLeft(this.plotter.yScale()).tickSizeOuter(0));
 
     this.bottomAxis(this.plotter.svg().append("g")
-	.classed("axis", true)
-	.classed("x", true)
-	.call(this.xAxis())
-    	.attr("transform", "translate("
-	      + this.plotter.margin.left + ","
-	      + (this.plotter.margin.top + height) + ")"));
+		    .attr("transform", "translate("
+			  + this.plotter.margin.left
+			  + ","
+			  + (this.plotter.margin.top + height)
+			  + ")")
+		    .classed("axis", true)
+		    .classed("x", true)
+		    .call(this.xAxis()));
 
     this.leftAxis(this.plotter.svg().append("g")
-	.classed("axis", true)
-	.classed("y", true).call(this.yAxis())
-	.attr("transform", "translate("
-	      + this.plotter.margin.left + ","
-	      + this.plotter.margin.top + ")"));
+		  .attr("transform", "translate("
+			+ this.plotter.margin.left
+			+ ", "
+			+ (this.plotter.margin.top)
+			+ ")")
+		  .classed("axis", true)
+		  .classed("y", true)
+		  .call(this.yAxis()));
 
     if ( this.leftAxis().node().getBBox().width > this.plotter.margin.left ){
 	this.plotter.margin.left += this.leftAxis().node().getBBox().width;

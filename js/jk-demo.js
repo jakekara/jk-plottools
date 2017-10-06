@@ -34,7 +34,7 @@ ax = new jkd3.axes(p);
 // will still work without axes. This can be used to make simple sparklines
 p.addDrawable(ax);
 
-// draw the 
+// draw the plot, now with axes
 p.draw();
 
 // --------------------------------------------------------------------------
@@ -58,7 +58,24 @@ s.x(function(a){ return a["x"]; });
 s.y(function(a){ return a["y"]; });
 
 // add the scatter layer s to the plotter p
-p.addDrawable(s)
+p.addDrawable(s);
 
-// draw the plotter
+// draw the plot, now with axes and scatter layer
 p.draw();
+
+// --------------------------------------------------------------------------
+// Part 4: Adding a line
+// --------------------------------------------------------------------------
+
+// create a new line
+var ln = new jkd3.line(p);
+
+// set the data, reusing values from the scatter layer s
+ln.data(s.data());
+ln.x(s.x());
+ln.y(s.y());
+
+p.addDrawable(ln);
+
+p.draw();
+

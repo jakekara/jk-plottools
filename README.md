@@ -179,3 +179,38 @@ Draw scatter within its _axisPlotter_
 Example:
 
 	s.draw();
+
+# jkd3.line
+
+A line drawable
+
+### jkd3.line(plotter)
+
+Initializer.
+
+*_plotter_ must be a jkd3.plotter object
+
+### jkd3.line.data(data)
+
+Set or get the data to use for the line.
+
+* _data_ must be an array of any type of data object
+
+With no argument passed, this function returns the line's data object.
+
+### jkd3.line.x(func)
+
+Set or get the function get an x value from an element of this line's data
+object.
+
+* func must be a function that takes an element from _data_ and returns a
+  numeric value
+
+With no argument, this function returns the x function.
+
+### jkd3.line.y
+
+Same as jkd3.line.x, but for the y value function.
+
+
+

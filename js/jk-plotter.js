@@ -25,6 +25,17 @@ jkd3.plotter.prototype.addDrawable = function(d){
     this.drawables.push(d);
 }
 
+jkd3.plotter.prototype.transform = function(sel){
+
+    sel.attr("transform", "translate("
+	     + this.margin.left
+	     + ", "
+	     + this.margin.top
+	     + ")");
+
+    return sel;
+}
+
 jkd3.plotter.prototype.draw = function(){
 
     var bbox = this.svg().node().getBoundingClientRect();
