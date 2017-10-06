@@ -1,7 +1,7 @@
 // jkd3 demo
 
 // Create a new axisPlotter object
-var p = new jkd3.axisPlotter();
+var p = new jkd3.plotter()
 
 // Create an svg element and pass it to
 // p as container for the plot
@@ -15,6 +15,11 @@ p.svg(d3.select("#container").append("svg")
 // the dimensions of the SVG
 p.xScale(d3.scaleLinear().domain([0,100]));
 p.yScale(d3.scaleLinear().domain([0,100]));
+
+ax = new jkd3.axes(p);
+
+p.addDrawable(ax);
+
 p.draw();
 
 // scatter plot some data
@@ -28,4 +33,6 @@ s.data(data);
 s.x(function(a){ return a["x"]; });
 s.y(function(a){ return a["y"]; });
 
-s.draw();
+p.addDrawable(s)
+
+p.draw();
