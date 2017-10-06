@@ -28,12 +28,22 @@ script tag.
 Here is a run-down of the methods in the order you would typically use
 them, along with a continus example that assumes you have included the jkd3
 library in an HTML document and have a div with id "#container" somewhere
-to draw in.
+to draw in. The complete example can be found in [js/jk-demo.js](js/jk-demo.js) and viewed live at
+
+# jkd3.axisPlotter
+
+The real benefit this object gives is that the
+draw function handles making sure the axes are positioned properly, which
+is kind of a pain in the ass and definitely not a problem you want to solve
+more than once.
+
+It is the base object that other objects for plotting scatter, line and bar
+charts depends on.
 
 ###  jkd3.axisPlotter()
 
-Create a new jkd3 axisPlotter, for drawing and positioning axes (left and
-bottom only at the moment).
+Initialize a new jkd3 axisPlotter, for drawing and positioning axes (left and
+bottom only at the moment). 
 
 Example:
 
@@ -88,3 +98,58 @@ Example:
 
 	// draw p
 	p.draw()
+
+# jkd3.scatter
+
+Given a jkd3.axisPlotter, some data, draw a scatter chart.
+
+### jkd3.scatter(axisPlotter)
+
+Initializer.
+
+* _axisPlotter_ must be a jkd3.axisPlotter
+
+Example:
+
+	// initialize a new jkd3.scatter object
+	var s = new jkd3.scatter(p)
+
+### jkd3.scatter.data(data)
+
+Set the data object.
+
+*_data_ must be an array of objects of any kind.
+
+If not argument is passed, return the current data object.
+
+Example:
+
+	
+	s.data(data);
+
+
+### jkd3.scatter.x(func)
+
+Set a function used to retrieve x values from elements in the _data_ array
+
+* _func_ must be a function that takes a _data_ element and returns a numeric value
+
+If not argument is passed, return the current x function.
+
+Example:
+
+	s.x(function(a){ return a["x"]; });
+
+### jkd3.scatter.y(func)
+
+Same as jkd3.scatter.x but for y values.
+
+     s.y(function(a){ return a["y"]; });
+
+### jkd3.scatter.draw()
+
+Draw scatter within its _axisPlotter_
+
+Example:
+
+	s.draw();
