@@ -41,7 +41,6 @@ jkd3.axisPlotter.prototype.draw = function(){
     
     this.yAxis(d3.axisLeft(this.yScale()).tickSizeOuter(0));
 
-
     this.bottomAxis(this.svg().append("g")
 	.classed("axis", true)
 	.classed("x", true)
