@@ -6,10 +6,10 @@ jkd3.scatter = function(plotter){
     return this;
 }
 
-jkd3.scatter.prototype.data = accessor("__data");
-jkd3.scatter.prototype.y = accessor("__y_func");
-jkd3.scatter.prototype.x = accessor("__x_func");
-jkd3.scatter.prototype.r = accessor("__r");
+jkd3.scatter.prototype.data = jkd3.accessor("__data");
+jkd3.scatter.prototype.y = jkd3.accessor("__y_func");
+jkd3.scatter.prototype.x = jkd3.accessor("__x_func");
+jkd3.scatter.prototype.r = jkd3.accessor("__r");
 
 jkd3.scatter.prototype.draw = function(){
 

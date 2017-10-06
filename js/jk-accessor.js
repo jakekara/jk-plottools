@@ -1,5 +1,7 @@
+var jkd3 = jkd3 || {};
+
 // reusable accessor for getting and setting
-var accessor = function(name, def_val){
+jkd3.accessor = function(name, def_val){
 
     // if (typeof(def_val) != "undefined")
     // 	this[name] = def_val;

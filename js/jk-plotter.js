@@ -13,18 +13,18 @@ jkd3.axisPlotter = function(){
     
 }
 
-jkd3.axisPlotter.prototype.height = accessor("__height");
-jkd3.axisPlotter.prototype.width = accessor("__width");
-jkd3.axisPlotter.prototype.leftAxis = accessor("__leftAxis");
-jkd3.axisPlotter.prototype.bottomAxis = accessor("__bottomAxis");
+jkd3.axisPlotter.prototype.height = jkd3.accessor("__height");
+jkd3.axisPlotter.prototype.width = jkd3.accessor("__width");
+jkd3.axisPlotter.prototype.leftAxis = jkd3.accessor("__leftAxis");
+jkd3.axisPlotter.prototype.bottomAxis = jkd3.accessor("__bottomAxis");
 
-jkd3.axisPlotter.prototype.svg = accessor("__svg");
+jkd3.axisPlotter.prototype.svg = jkd3.accessor("__svg");
 
-jkd3.axisPlotter.prototype.xScale = accessor("__xScale");
-jkd3.axisPlotter.prototype.yScale = accessor("__yScale");
+jkd3.axisPlotter.prototype.xScale = jkd3.accessor("__xScale");
+jkd3.axisPlotter.prototype.yScale = jkd3.accessor("__yScale");
 
-jkd3.axisPlotter.prototype.yAxis = accessor("__yAxis");
-jkd3.axisPlotter.prototype.xAxis = accessor("__xAxis");
+jkd3.axisPlotter.prototype.yAxis = jkd3.accessor("__yAxis");
+jkd3.axisPlotter.prototype.xAxis = jkd3.accessor("__xAxis");
 
 jkd3.axisPlotter.prototype.draw = function(){
 

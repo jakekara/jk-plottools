@@ -1,8 +1,10 @@
-// use 
+// jkd3 demo
+
+// Create a new axisPlotter object
 var p = new jkd3.axisPlotter();
 
-console.log(p);
-
+// Create an svg element and pass it to
+// p as container for the plot
 p.svg(d3.select("#container").append("svg")
       .style("width", "100%")
       .style("height", "500px"));
