@@ -18,9 +18,6 @@ jkd3.axes.prototype.draw = function(){
     var width = bbox.width - this.plotter.margin.left - this.plotter.margin.right;
     var height = bbox.height - this.plotter.margin.top - this.plotter.margin.bottom;
     
-    this.plotter.xScale(this.plotter.xScale().range([0,width]));
-    this.plotter.yScale(this.plotter.yScale().range([height,0]));
-
     this.xAxis(d3.axisBottom(this.plotter.xScale()).tickSizeOuter(0))
     
     this.yAxis(d3.axisLeft(this.plotter.yScale()).tickSizeOuter(0));

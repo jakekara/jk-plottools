@@ -1,7 +1,11 @@
 // jkd3 demo
 
+// --------------------------------------------------------------------------
+// Part 1: Creating a plotter
+// --------------------------------------------------------------------------
+
 // Create a new axisPlotter object
-var p = new jkd3.plotter()
+var p = new jkd3.plotter();
 
 // Create an svg element and pass it to
 // p as container for the plot
@@ -16,23 +20,45 @@ p.svg(d3.select("#container").append("svg")
 p.xScale(d3.scaleLinear().domain([0,100]));
 p.yScale(d3.scaleLinear().domain([0,100]));
 
-ax = new jkd3.axes(p);
-
-p.addDrawable(ax);
-
+// draw the plot (does nothing, seemingly, since it has no drawable)
 p.draw();
 
-// scatter plot some data
+// --------------------------------------------------------------------------
+// Part 3: Creating axes
+// --------------------------------------------------------------------------
+
+// create a new axes
+ax = new jkd3.axes(p);
+
+// add the axis to the plotter note, comment out this line and the plot
+// will still work without axes. This can be used to make simple sparklines
+p.addDrawable(ax);
+
+// draw the 
+p.draw();
+
+// --------------------------------------------------------------------------
+// Part 3: Adding a scatter layer
+// --------------------------------------------------------------------------
+
+// generate some data
 var data = d3.range(100).map(function(_, i){
     return {"x": i,"y":Math.random() * 100};
 });
 
+// create a scatter drawable
 var s = new jkd3.scatter(p);
 
+// set the data for the scatter drawable
 s.data(data);
+
+// set the functions to return x and y values
+//  from the data
 s.x(function(a){ return a["x"]; });
 s.y(function(a){ return a["y"]; });
 
+// add the scatter layer s to the plotter p
 p.addDrawable(s)
 
+// draw the plotter
 p.draw();

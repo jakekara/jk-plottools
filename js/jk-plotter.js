@@ -27,6 +27,13 @@ jkd3.plotter.prototype.addDrawable = function(d){
 
 jkd3.plotter.prototype.draw = function(){
 
+    var bbox = this.svg().node().getBoundingClientRect();
+    var width = bbox.width - this.margin.left - this.margin.right;
+    var height = bbox.height - this.margin.top - this.margin.bottom;
+    
+    this.xScale(this.xScale().range([0,width]));
+    this.yScale(this.yScale().range([height,0]));
+    
     this.svg().html("");
     
     for (var i in this.drawables){

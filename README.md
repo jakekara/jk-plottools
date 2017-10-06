@@ -11,9 +11,10 @@ chart, especially adding and positioning axes. Right now I'm intent to only
 implement left and bottom axis support, since I've never ever made a chart
 with a right or top axis.
 
-The general idea in how I add axes is by creating an axisPlotter object
-that takes an svg to draw in, and d3 scales of any kind (time, linear,
-band), and draws the axes for you.
+The general idea in how I add axes is by creating an plotter object that
+takes an svg to draw in, and d3 scales of any kind (time, linear,
+band). Theny you add drawable objects (objects with draw methods) like
+axes, scatter layers, line layers, etc.
 
 All of the d3 stuff, the d3 scales, the d3 axes, the svg, are all exposed
 members of the axisPlotter object, so you can customize it to your heart's
@@ -28,29 +29,25 @@ script tag.
 Here is a run-down of the methods in the order you would typically use
 them, along with a continus example that assumes you have included the jkd3
 library in an HTML document and have a div with id "#container" somewhere
-to draw in. The complete example can be found in [js/jk-demo.js](js/jk-demo.js) and viewed live at
+to draw in. The complete example can be found in
+[js/jk-demo.js](js/jk-demo.js) and viewed live at
 
-# jkd3.axisPlotter
+# jkd3.plotter
 
-The real benefit this object gives is that the
-draw function handles making sure the axes are positioned properly, which
-is kind of a pain in the ass and definitely not a problem you want to solve
-more than once.
+Object that contains the SVG to draw in, as well as an array of drawable
+components (implemented in subsequent objects, such as jkd3.axis and
+jkd3.scatter).
 
-It is the base object that other objects for plotting scatter, line and bar
-charts depends on.
+###  jkd3.plotter()
 
-###  jkd3.axisPlotter()
-
-Initialize a new jkd3 axisPlotter, for drawing and positioning axes (left and
-bottom only at the moment). 
+Initializer. Takes no arguments.
 
 Example:
 
-       // Create a new axisPlotter object
-       var p = new jkd3.axisPlotter();
+       // Create a new plotter object
+       var p = new jkd3.plotter();
 
-### jkd3.svg(d3selection)
+### jkd3.plotter.svg(d3selection)
 
 Set the svg selection in which the axisPlotter will draw.
 
@@ -66,7 +63,7 @@ Example:
 	  .style("width", "100%")
 	  .style("height", "500px"));
 
-### jkd3.axisPlotter.xScale(d3Scale)
+### jkd3.plotter.xScale(d3Scale)
 
 Set the d3 scale for the x axis.
 
@@ -82,26 +79,55 @@ Example:
 	// set the x scale to a linear scale from 0 to 100
 	p.xScale(d3.scaleLinear().domain([0,100]));
 
-### jkd3.axisPlotter.yScale(d3Scale)
+### jkd3.plotter.yScale(d3Scale)
 
-Same as axisPlotter.xScale but for the y axis.
+Same as plotter.xScale but for the y axis.
 
 Example:
 	// set the y scale to a linear scale from 0 to 100
 	p.yScale(d3.scaleLinear().domain([0,100]));
 
-### jkd3.axisPlotter.draw()
+### jkd3.plotter.addDrawable(d)
 
-Draw the axes in the svg
+Add a drawable to the plot. These drawables, such as axes or scatter
+objects, will be drawn in order they are added!
+
+Example:
+
+	// in order to keep this example liner, see the jkd3.axes
+	// initializer example code.
+
+### jkd3.plotter.draw()
+
+Clear the plotter's _svg_ and draw all drawable items in order they were
+added.
 
 Example:
 
 	// draw p
 	p.draw()
 
+# jkd3.axes
+
+A drawable that requires a jkd3.plotter. The x and y scale belong to the
+plotter, so axes doesn't need any configuration. You just create one, and
+then add it to the plotter's drawables.
+
+### jkd3.axes()
+
+Initializer. Takes a plotter object.
+
+Example:
+
+	// create a new 
+	ax = new jkd3.axes(p);
+
+	// now add it to the plotter p
+	p.addDrawable(ax);
+
 # jkd3.scatter
 
-Given a jkd3.axisPlotter, some data, draw a scatter chart.
+Given a jkd3.plotter, some data, draw a scatter chart.
 
 ### jkd3.scatter(axisPlotter)
 
