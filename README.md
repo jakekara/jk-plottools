@@ -84,6 +84,7 @@ Example:
 Same as plotter.xScale but for the y axis.
 
 Example:
+
 	// set the y scale to a linear scale from 0 to 100
 	p.yScale(d3.scaleLinear().domain([0,100]));
 
