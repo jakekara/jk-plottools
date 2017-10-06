@@ -60,11 +60,11 @@ If no argument is passed, this will return the current svg.
 
 Example:
 
-      // Create an svg element and pass it to
-      // p as container for the plot
-      p.svg(d3.select("#container").append("svg")
-	.style("width", "100%")
-      	.style("height", "500px"));
+	// Create an svg element and pass it to
+	// p as container for the plot
+	p.svg(d3.select("#container").append("svg")
+	  .style("width", "100%")
+	  .style("height", "500px"));
 
 ### jkd3.axisPlotter.xScale(d3Scale)
 
